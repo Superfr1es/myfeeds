@@ -1,0 +1,28 @@
+#!/bin/sh
+# /lib/firstboot/set-wifi - Factory reset WiFi configuration
+
+. /lib/functions.sh
+
+factory_wifi_config() {
+    echo "Factory reset: Setting WiFi SSID to 网名真难取, password to 12345678"
+    
+    uci -q batch << 'EOF'
+set wireless.default_radio0.ssid='网名真难取'
+set wireless.default_radio0.key='12345678'
+set wireless.radio0.disabled='0'
+EOF
+
+    if uci -q get wireless.radio1 >/dev/null 2>&1; then
+        uci -q batch << 'EOF'
+set wireless.default_radio1.ssid='网名真难取_5G'
+set wireless.default_radio1.key='12345678'
+set wireless.radio1.disabled='0'
+EOF
+    fi
+    
+    uci commit wireless
+    
+    echo "Factory reset WiFi configuration applied"
+}
+
+boot_hook_add firstboot factory_wifi_config

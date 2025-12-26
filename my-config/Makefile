@@ -18,7 +18,7 @@ define Package/my-config
 endef
 
 define Package/my-config/description
-  Set WiFi SSID to "网名真难取" and password to "12345678" on factory reset.
+  Set WiFi SSID to "名字" and password to "12345678" on factory reset.
 endef
 
 define Build/Compile

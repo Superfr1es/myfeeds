@@ -1,7 +1,10 @@
 #!/bin/sh
 # /lib/firstboot/set-wifi - Factory reset WiFi configuration
 
-if [ ! -f /tmp/custom_wifi_done ]; then
+if [ -z "$FIRSTBOOT" ]; then
+    rm -f /etc/uci-defaults/set-wifi
+    exit 0
+fi
     sleep 5
     echo "ssid and password set"
     uci set wireless.default_radio0.ssid='名字'
@@ -16,7 +19,7 @@ else
     echo "设备没有5G WiFi跳过set"
 fi
     uci commit wireless
-    touch /tmp/custom_wifi_done
+    
     rm -f /etc/uci-defaults/set-wifi
 fi
 

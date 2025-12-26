@@ -9,7 +9,7 @@ PKG_LICENSE:=GPL-2.0
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/myfeeds
+define Package/my-config
   SECTION:=base
   CATEGORY:=Base system
   TITLE:=Factory Reset WiFi Configuration
@@ -25,7 +25,6 @@ define Build/Compile
 endef
 
 define Package/my-config/install
-	# 将脚本安装到 /lib/firstboot/ 目录
 	$(INSTALL_DIR) $(1)/lib/firstboot
 	$(INSTALL_BIN) ./files/set-wifi $(1)/lib/firstboot/set-wifi
 endef

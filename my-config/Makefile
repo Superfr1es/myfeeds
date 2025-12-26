@@ -25,8 +25,8 @@ define Build/Compile
 endef
 
 define Package/my-config/install
-	$(INSTALL_DIR) $(1)/lib/firstboot
-	$(INSTALL_BIN) ./files/set-wifi $(1)/lib/firstboot/set-wifi
-endef
+	$(INSTALL_DIR) $(1)/etc/uci-defaults
+	$(INSTALL_BIN) ./files/set-wifi $(1)/etc/uci-defaults/set-wifi
+endef	
 
 $(eval $(call BuildPackage,my-config))

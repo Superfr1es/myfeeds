@@ -1,7 +1,10 @@
 #!/bin/sh
 # /etc/uci-defaults/set-wifi
 
-if [ ! -f /etc/custom_wifi_done ]; then
+if [ -f /etc/config/wireless ] && [ -s /etc/config/wireless ]; then
+    rm -f /etc/uci-defaults/set-wifi
+    exit 0
+fi
     sleep 5
     echo "ssid and password set"
     uci set wireless.default_radio0.ssid='名字'
@@ -15,8 +18,7 @@ if uci -q get wireless.radio1 >/dev/null 2>&1; then
 else
     echo "设备没有5G WiFi跳过set"
 fi
-    uci commit wireless
-    touch /etc/custom_wifi_done
+    uci commit wirele
     rm -f /etc/uci-defaults/set-wifi
 fi
 

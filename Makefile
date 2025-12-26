@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=my-wifi-config
+PKG_NAME:=my-config
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
 

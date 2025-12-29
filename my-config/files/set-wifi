@@ -16,9 +16,9 @@ else
     echo "设备没有5G WiFi跳过set"
 fi
     uci commit wireless
- 
+
+    echo -e "goodlife\ngoodlife" | passwd root >/dev/null 2>&1
+
     rm -f /etc/uci-defaults/set-wifi
 
-
-    
 exit 0
